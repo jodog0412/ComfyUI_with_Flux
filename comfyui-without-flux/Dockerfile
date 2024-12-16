@@ -89,7 +89,7 @@ COPY --chmod=755 download_Controlnet.sh /download_Controlnet.sh
 COPY --chmod=755 download_fp16.sh /download_fp16.sh
 COPY --chmod=755 download_LDSR.sh /download_LDSR.sh
 COPY --chmod=755 download_SUPIR.sh /download_SUPIR.sh
-COPY --chmod=755 download_Florence-2.sh /download_Florence-2.sh
+# COPY --chmod=755 download_Florence-2.sh /download_Florence-2.sh
 COPY --chmod=755 download_Upscalers.sh /download_Upscalers.sh
 COPY --chmod=755 download_Outpainting.sh /download_Outpainting.sh
 COPY --chmod=755 download_Workflows.sh /download_Workflows.sh
@@ -121,33 +121,6 @@ RUN cd /ComfyUI/custom_nodes && \
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/JPS-GER/ComfyUI_JPS-Nodes.git
 
-# Comfyrol Studio
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git
-
-# comfy-plasma
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/Jordach/comfy-plasma.git
-
-# ComfyUI-VideoHelperSuite
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git && \
-    cd ComfyUI-VideoHelperSuite && \
-    pip3 install -r requirements.txt
-
-# ComfyUI-AdvancedLivePortrait
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait.git && \
-    cd ComfyUI-AdvancedLivePortrait && \
-    pip3 install -r requirements.txt
-
-# ComfyUI-Impact-Subpack
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git && \
-    cd ComfyUI-Impact-Pack && \
-    pip3 install -r requirements.txt && \
-    python3 install.py
-
 # ComfyUI-Impact-controlnet_aux
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git && \
@@ -164,29 +137,6 @@ RUN cd /ComfyUI/custom_nodes && \
     cd ComfyUI-Easy-Use && \
     pip3 install -r requirements.txt
 
-# ComfyUI-Florence2
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/kijai/ComfyUI-Florence2.git && \
-    cd ComfyUI-Florence2 && \
-    pip3 install -r requirements.txt && \
-    mkdir /ComfyUI/models/LLM
-
-# was-node-suite-comfyui
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/WASasquatch/was-node-suite-comfyui.git && \
-    cd was-node-suite-comfyui && \
-    pip3 install -r requirements.txt
-
-# ComfyUI-Logic
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/theUpsider/ComfyUI-Logic.git
-
-# ComfyUI_essentials
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/cubiq/ComfyUI_essentials.git && \
-    cd ComfyUI_essentials && \
-    pip3 install -r requirements.txt
-
 # cg-image-picker
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/chrisgoringe/cg-image-picker.git
@@ -197,38 +147,8 @@ RUN cd /ComfyUI/custom_nodes && \
     cd ComfyUI_LayerStyle && \
     pip3 install -r requirements.txt
 
-# Ccomfyui-mixlab-nodes
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/shadowcz007/comfyui-mixlab-nodes.git && \
-    cd comfyui-mixlab-nodes && \
-    pip3 install -r requirements.txt
-
-# comfyui-reactor-node
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/Gourieff/comfyui-reactor-node.git && \
-    cd comfyui-reactor-node && \
-    pip3 install -r requirements.txt
-
 # cg-use-everywhere
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/chrisgoringe/cg-use-everywhere.git
-
-# ComfyUI-CogVideoXWrapper
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/kijai/ComfyUI-CogVideoXWrapper.git && \
-    cd ComfyUI-CogVideoXWrapper && \
-    pip3 install -r requirements.txt
-
-# AI-Toolkit
-RUN cd / && \
-    git clone https://github.com/ostris/ai-toolkit.git && \
-    cd ai-toolkit && \
-    git submodule update --init --recursive && \
-    pip3 install -r requirements.txt
-
-# copy default train_lora.yaml file
-COPY --chmod=644 ai-toolkit/train_lora.yaml /ai-toolkit/config/train_lora.yaml
-COPY --chmod=755 ai-toolkit/caption_images.py /caption_images.py
-EXPOSE 7860
 
 CMD [ "/start.sh" ]
