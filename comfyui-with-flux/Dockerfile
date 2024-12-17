@@ -19,6 +19,8 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download city96/FLUX.1-dev-gguf 
 
 # Download and move taef1.safetensors
 # RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download madebyollin/taef1 --include diffusion_pytorch_model.safetensors --local-dir ./ComfyUI/models/vae_approx
+RUN wget -O ./ComfyUI/models/vae_approx/taef1_decoder.pth "https://github.com/madebyollin/taesd/blob/main/taef1_decoder.pth" --progress=bar:force:noscroll
+RUN wget -O ./ComfyUI/models/vae_approx/taef1_encoder.pth "https://github.com/madebyollin/taesd/blob/main/taef1_encoder.pth" --progress=bar:force:noscroll
 
 # Download and move clip_l.safetensors
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download comfyanonymous/flux_text_encoders --include "*.safetensors" --exclude "*_fp8_*.*" --local-dir ./ComfyUI/models/clip
