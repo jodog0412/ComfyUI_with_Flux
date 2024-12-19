@@ -30,7 +30,7 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download openai/clip-vit-large-p
 # download in-context-lora
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ali-vilab/In-Context-LoRA --include "*.safetensors" --local-dir /ComfyUI/models/loras
 
-# download 4x-UltraSharp
+# download upscaler
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ai-forever/Real-ESRGAN --include "RealESRGAN_x2.pth" --local-dir /ComfyUI/models/upscale_models
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download lokCX/4x-Ultrasharp --include "*.pth" --local-dir /ComfyUI/models/upscale_models
 
