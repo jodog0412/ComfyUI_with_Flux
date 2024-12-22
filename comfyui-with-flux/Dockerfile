@@ -36,7 +36,7 @@ RUN mkdir -p /ComfyUI/models/controlnet/FLUX.1/Shakker-Labs-ControlNet-Union-Pro
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro --include diffusion_pytorch_model.safetensors --local-dir /ComfyUI/models/controlnet/FLUX.1/Shakker-Labs-ControlNet-Union-Pro
 
 # Donwload flux1-redux-dev
-RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download black-forest-labs/FLUX.1-Redux-dev --include "flux1-redux-dev.safetensors" --local-dir /ComfyUI/models/style_models
+# RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download black-forest-labs/FLUX.1-Redux-dev --include "flux1-redux-dev.safetensors" --local-dir /ComfyUI/models/style_models
 
 # Download LoRA
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ali-vilab/In-Context-LoRA --include "*.safetensors" --local-dir /ComfyUI/models/loras
