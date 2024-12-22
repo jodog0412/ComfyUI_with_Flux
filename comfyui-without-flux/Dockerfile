@@ -85,18 +85,18 @@ RUN cd /ComfyUI/custom_nodes && \
     pip3 install -r requirements.txt
 
 # Add download scripts for additional models
-COPY --chmod=755 download_Controlnet.sh /download_Controlnet.sh
-COPY --chmod=755 download_fp16.sh /download_fp16.sh
+# COPY --chmod=755 download_Controlnet.sh /download_Controlnet.sh
+# COPY --chmod=755 download_fp16.sh /download_fp16.sh
 COPY --chmod=755 download_LDSR.sh /download_LDSR.sh
 COPY --chmod=755 download_SUPIR.sh /download_SUPIR.sh
-COPY --chmod=755 download_Florence-2.sh /download_Florence-2.sh
-COPY --chmod=755 download_Upscalers.sh /download_Upscalers.sh
+# COPY --chmod=755 download_Florence-2.sh /download_Florence-2.sh
+# COPY --chmod=755 download_Upscalers.sh /download_Upscalers.sh
 COPY --chmod=755 download_Outpainting.sh /download_Outpainting.sh
 COPY --chmod=755 download_Workflows.sh /download_Workflows.sh
 COPY --chmod=755 update_Workflows.sh /update_Workflows.sh
 COPY --chmod=755 download_ALL.sh /download_ALL.sh
 COPY --chmod=755 make_venv.sh /make_venv.sh
-COPY --chmod=755 download_Files.sh /download_Files.sh
+# COPY --chmod=755 download_Files.sh /download_Files.sh
 COPY --chmod=755 disable_mixlab.sh /disable_mixlab.sh
 
 # SUPIR Upscale
@@ -121,6 +121,17 @@ RUN cd /ComfyUI/custom_nodes && \
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/JPS-GER/ComfyUI_JPS-Nodes.git
 
+# Comfyrol Studio
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git
+
+# ComfyUI-Impact-Subpack
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git && \
+    cd ComfyUI-Impact-Pack && \
+    pip3 install -r requirements.txt && \
+    python3 install.py
+
 # ComfyUI-Impact-controlnet_aux
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git && \
@@ -135,6 +146,18 @@ RUN cd /ComfyUI/custom_nodes && \
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/yolain/ComfyUI-Easy-Use.git && \
     cd ComfyUI-Easy-Use && \
+    pip3 install -r requirements.txt
+
+# was-node-suite-comfyui
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/WASasquatch/was-node-suite-comfyui.git && \
+    cd was-node-suite-comfyui && \
+    pip3 install -r requirements.txt
+
+# ComfyUI_essentials
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/cubiq/ComfyUI_essentials.git && \
+    cd ComfyUI_essentials && \
     pip3 install -r requirements.txt
 
 # cg-image-picker

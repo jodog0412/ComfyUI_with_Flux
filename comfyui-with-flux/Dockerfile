@@ -38,6 +38,11 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download lokCX/4x-Ultrasharp --i
 RUN mkdir -p /ComfyUI/models/controlnet/FLUX.1/Shakker-Labs-ControlNet-Union-Pro
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro --include diffusion_pytorch_model.safetensors --local-dir /ComfyUI/models/controlnet/FLUX.1/Shakker-Labs-ControlNet-Union-Pro
 
+# RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download black-forest-labs/FLUX.1-Redux-dev --include "flux1-redux-dev.safetensors" --local-dir /ComfyUI/models/style_models
+
+# RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download TTPlanet/Migration_Lora_flux --include "Migration_Lora_cloth.safetensors" --local-dir /ComfyUI/models/lora
+# RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Shakker-Labs/FLUX.1-dev-LoRA-add-details --include "*.safetensors" --local-dir /ComfyUI/models/lora
+
 # download ip_adapter
 RUN mkdir -p /ComfyUI/models/xlabs/ipadapters
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download XLabs-AI/flux-ip-adapter-v2 --include ip_adapter.safetensors --local-dir /ComfyUI/models/xlabs/ipadapters
