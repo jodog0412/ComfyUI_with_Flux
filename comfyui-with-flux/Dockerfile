@@ -27,21 +27,21 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download comfyanonymous/flux_tex
 # Download and move clip-vit.safetensors
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download openai/clip-vit-large-patch14 --include model.safetensors --local-dir /ComfyUI/models/clip_vision
 
-# download in-context-lora
-RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ali-vilab/In-Context-LoRA --include "*.safetensors" --local-dir /ComfyUI/models/loras
-
-# download upscaler
+# Download upscaler
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ai-forever/Real-ESRGAN --include "RealESRGAN_x2.pth" --local-dir /ComfyUI/models/upscale_models
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download lokCX/4x-Ultrasharp --include "*.pth" --local-dir /ComfyUI/models/upscale_models
 
-# Download and move flux1_dev_controlnet_union_pro.safetensors
+# Download and move controlnet
 RUN mkdir -p /ComfyUI/models/controlnet/FLUX.1/Shakker-Labs-ControlNet-Union-Pro
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro --include diffusion_pytorch_model.safetensors --local-dir /ComfyUI/models/controlnet/FLUX.1/Shakker-Labs-ControlNet-Union-Pro
 
-# RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download black-forest-labs/FLUX.1-Redux-dev --include "flux1-redux-dev.safetensors" --local-dir /ComfyUI/models/style_models
+# Donwload flux1-redux-dev
+RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download black-forest-labs/FLUX.1-Redux-dev --include "flux1-redux-dev.safetensors" --local-dir /ComfyUI/models/style_models
 
-# RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download TTPlanet/Migration_Lora_flux --include "Migration_Lora_cloth.safetensors" --local-dir /ComfyUI/models/lora
-# RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Shakker-Labs/FLUX.1-dev-LoRA-add-details --include "*.safetensors" --local-dir /ComfyUI/models/lora
+# Download LoRA
+RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ali-vilab/In-Context-LoRA --include "*.safetensors" --local-dir /ComfyUI/models/loras
+RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download TTPlanet/Migration_Lora_flux --include "Migration_Lora_cloth.safetensors" --local-dir /ComfyUI/models/loras
+RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Shakker-Labs/FLUX.1-dev-LoRA-add-details --include "*.safetensors" --local-dir /ComfyUI/models/loras
 
 # download ip_adapter
 RUN mkdir -p /ComfyUI/models/xlabs/ipadapters
