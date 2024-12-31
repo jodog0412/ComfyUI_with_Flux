@@ -18,7 +18,7 @@ jobs:
       - name: Get Dockerfile path
         id: get_dockerfile
         run: |
-          FILE_PATH=$(echo "${{ github.event.head_commit.modified }}" | grep -o '[^"]*Dockerfile')
+          FILE_PATH=$(echo "${{github.event.head_commit.modified}}" | grep -o '[^"]*Dockerfile')
           IMAGE_NAME=$(echo "$FILE_PATH" | sed 's/\/Dockerfile//' | tr '/' '-')
           echo "DOCKERFILE_PATH=$FILE_PATH" >> $GITHUB_ENV
           echo "IMAGE_NAME=jodog0412/$IMAGE_NAME" >> $GITHUB_ENV
