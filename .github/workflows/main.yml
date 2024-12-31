@@ -19,7 +19,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          images: ${{ jodog0412/comfyuiwithflux }}
+          images: jodog0412/comfyuiwithflux
           tag-semver: |
             {{version}}
             {{major}}.{{minor}}
@@ -39,8 +39,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ${{ comfyui-with-flux/Dockerfile }}
-          file: ${{ comfyui-with-flux/Dockerfile }}
+          context: comfyui-with-flux/Dockerfile
+          file: comfyui-with-flux/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
