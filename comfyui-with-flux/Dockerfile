@@ -50,7 +50,7 @@ RUN mkdir -p /ComfyUI/models/controlnet/FLUX.1/Shakker-Labs-ControlNet-Union-Pro
 # Download LoRA
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ali-vilab/In-Context-LoRA --include "*.safetensors" --local-dir /ComfyUI/models/loras
 # RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download tryonlabs/FLUX.1-dev-LoRA-Outfit-Generator --include "outfit-generator.safetensors" --local-dir /ComfyUI/models/loras
-# RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download TTPlanet/Migration_Lora_flux --include "Migration_Lora_cloth.safetensors" --local-dir /ComfyUI/models/loras
+RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download TTPlanet/Migration_Lora_flux --include "Migration_Lora_cloth.safetensors" --local-dir /ComfyUI/models/loras
 # RUN wget -O /ComfyUI/models/loras/simply_try_on.safetensors "https://civitai.com/api/download/models/1063742?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
 
 # Download Detail-LoRA
