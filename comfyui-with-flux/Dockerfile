@@ -33,8 +33,12 @@ RUN mkdir -p /ComfyUI/models/diffusion_models/FLUX1 && \
 # Download and move clip_l.safetensors
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download comfyanonymous/flux_text_encoders --include "*.safetensors" --exclude "*_fp8_*.*" --local-dir /ComfyUI/models/clip
 
-# Download and move clip-vit.safetensors
-RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download openai/clip-vit-large-patch14 --include model.safetensors --local-dir /ComfyUI/models/clip_vision
+# Download and move clip_vision models
+RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download openai/clip-vit-large-patch14 --include model.safetensors --local-dir /ComfyUI/models/clip_vision && \
+    mv /ComfyUI/models/clip_vision/model.safetensors /ComfyUI/models/clip_vision/clip_vit.safetensors
+
+RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download google/siglip-so400m-patch14-384 --include model.safetensors --local-dir /ComfyUI/models/clip_vision && \
+    mv /ComfyUI/models/clip_vision/model.safetensors /ComfyUI/models/clip_vision/siglip-so400m.safetensors
 
 # Download upscaler
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ai-forever/Real-ESRGAN --include "RealESRGAN_x2.pth" --local-dir /ComfyUI/models/upscale_models
@@ -44,7 +48,8 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download lokCX/4x-Ultrasharp --i
 RUN mkdir -p /ComfyUI/models/controlnet/FLUX.1/Shakker-Labs-ControlNet-Union-Pro && \
     HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro --include diffusion_pytorch_model.safetensors --local-dir /ComfyUI/models/controlnet/FLUX.1/Shakker-Labs-ControlNet-Union-Pro
 
-# Donwload flux1-redux-dev
+# Donwload redux & fill model
+# RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download black-forest-labs/FLUX.1-Fill-dev --include "flux1-fill-dev.safetensors" --local-dir /ComfyUI/models/diffusion_models/FLUX1
 # RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download black-forest-labs/FLUX.1-Redux-dev --include "flux1-redux-dev.safetensors" --local-dir /ComfyUI/models/style_models
 
 # Download LoRA
@@ -54,8 +59,12 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ali-vilab/In-Context-Lo
 # RUN wget -O /ComfyUI/models/loras/simply_try_on.safetensors "https://civitai.com/api/download/models/1063742?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
 
 # Download Detail-LoRA
+RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download strangerzonehf/Flux-Super-Realism-LoRA --include "super-realism.safetensors" --local-dir /ComfyUI/models/loras
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Shakker-Labs/FLUX.1-dev-LoRA-add-details --include "*.safetensors" --local-dir /ComfyUI/models/loras
 RUN wget -O /ComfyUI/models/loras/ultrarealistic-lora-project.safetensors "https://civitai.com/api/download/models/1026423?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
+
+# Donwload Turbo-LoRA
+RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download alimama-creative/FLUX.1-Turbo-Alpha --include "diffusion_pytorch_model.safetensors" --local-dir /ComfyUI/models/loras
 
 # Download ip_adapter
 RUN mkdir -p /ComfyUI/models/ipadapter-flux && \
