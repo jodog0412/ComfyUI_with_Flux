@@ -1,4 +1,4 @@
-FROM jodog0412/comfyuiwithoutflux:1.0.0
+FROM jodog0412/jdg-comfyui:1.0.0
 
 LABEL "repository"="https://github.com/jodog0412/github-action"
 LABEL "maintainer"="jodog0412 <jodog0412@gmail.com>"

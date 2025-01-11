@@ -1,4 +1,4 @@
-FROM jodog0412/comfyuiwithoutflux:1.0.0
+FROM jodog0412/jdg-comfyui:1.0.0
 
 RUN pip3 install hf_transfer
 
