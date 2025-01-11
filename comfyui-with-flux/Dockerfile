@@ -62,6 +62,7 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ali-vilab/In-Context-Lo
 # RUN wget -O /ComfyUI/models/loras/cute_robot.safetensors "https://civitai.com/api/download/models/856914?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
 # RUN wget -O /ComfyUI/models/loras/Minimalist_Flat_Color_Illustration.safetensors "https://civitai.com/api/download/models/1077005?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
 # RUN wget -O /ComfyUI/models/loras/vector_Illustration.safetensors "https://civitai.com/api/download/models/880820?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
+# RUN wget -O /ComfyUI/models/loras/IlluLoRA.safetensors "https://civitai.com/api/download/models/940211?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
 
 # Download Detail-LoRA
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download strangerzonehf/Flux-Super-Realism-LoRA --include "super-realism.safetensors" --local-dir /ComfyUI/models/loras && \
