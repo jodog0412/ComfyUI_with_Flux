@@ -40,7 +40,7 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download openai/clip-vit-large-p
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download google/siglip-so400m-patch14-384 --include model.safetensors --local-dir /ComfyUI/models/clip_vision && \
     mv /ComfyUI/models/clip_vision/model.safetensors /ComfyUI/models/clip_vision/siglip-so400m.safetensors
 
-# Download upscaler
+# Download upscalers
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ai-forever/Real-ESRGAN --include "RealESRGAN_x2.pth" --local-dir /ComfyUI/models/upscale_models && \
     HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download lokCX/4x-Ultrasharp --include "*.pth" --local-dir /ComfyUI/models/upscale_models
 
@@ -68,7 +68,8 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ali-vilab/In-Context-Lo
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download strangerzonehf/Flux-Super-Realism-LoRA --include "super-realism.safetensors" --local-dir /ComfyUI/models/loras && \
     HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Shakker-Labs/FLUX.1-dev-LoRA-add-details --include "*.safetensors" --local-dir /ComfyUI/models/loras && \
     wget -O /ComfyUI/models/loras/ultrarealistic-lora-project.safetensors "https://civitai.com/api/download/models/1026423?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9" && \
-    wget -O /ComfyUI/models/loras/detailed_hands.safetensors "https://civitai.com/api/download/models/804967?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
+    wget -O /ComfyUI/models/loras/detailed_hands.safetensors "https://civitai.com/api/download/models/804967?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9" && \
+    wget -O /ComfyUI/models/loras/Realistic_Skin_Texture.safetensors "https://civitai.com/api/download/models/1081450?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
 # RUN wget -O /ComfyUI/models/loras/sinfully_stylish.safetensors "https://civitai.com/api/download/models/755549?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
 
 # Download ip_adapter
