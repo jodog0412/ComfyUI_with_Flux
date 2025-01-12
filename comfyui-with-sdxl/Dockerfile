@@ -4,7 +4,7 @@ RUN pip3 install hf_transfer
 
 # Download checkpoint models based on Illustrious-XL
 RUN wget -O /ComfyUI/models/checkpoints/NTRMIX.safetensors "https://civitai.com/api/download/models/1166878?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9" && \
-    wget -O /ComfyUI/models/checkpoints/Mistoon_Anime.safetensors "https://civitai.com/api/download/models/1151831?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
+    wget -O /ComfyUI/models/checkpoints/NoobAI_VPred.safetensors "https://civitai.com/api/download/models/1190596?type=Model&format=SafeTensor&token=ff61c6fbf8c474895b34eddabb2e31f9"
     
 # Download upscaler
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ai-forever/Real-ESRGAN --include "RealESRGAN_x2.pth" --local-dir /ComfyUI/models/upscale_models && \
