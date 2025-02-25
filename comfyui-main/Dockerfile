@@ -169,7 +169,4 @@ RUN cd /ComfyUI/custom_nodes && \
     cd ComfyUI-Janus-Pro && \
     pip3 install -r requirements.txt
 
-# Download models for Janus-Pro
-# RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download deepseek-ai/Janus-Pro-1B --local-dir /ComfyUI/models/Janus-Pro/Janus-Pro-1B
-
 CMD [ "/start.sh" ]
