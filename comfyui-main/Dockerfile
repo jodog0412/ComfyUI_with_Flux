@@ -6,8 +6,6 @@ ARG DOCKER_FROM=nvidia/cuda:$CUDA_VERSION-cudnn$CUDNN_VERSION-devel-ubuntu$UBUNT
 # Base NVidia CUDA Ubuntu image
 FROM $DOCKER_FROM AS base
 
-RUN pip3 install hf_transfer
-
 # Install Python plus openssh, which is our minimum set of required packages.
 RUN apt-get update -y && \
     apt-get install -y python3 python3-pip python3-venv && \
@@ -15,6 +13,8 @@ RUN apt-get update -y && \
     python3 -m pip install --upgrade pip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install hf_transfer
 
 # Install nginx
 RUN apt-get update && \
