@@ -78,7 +78,8 @@ RUN pip3 install jupyterlab
 EXPOSE 8888
 
 # Add download scripts for additional models
-# COPY --chmod=755 download_Florence-2.sh /download_Florence-2.sh
+COPY --chmod=755 download_Florence-2.sh /download_Florence-2.sh
+COPY --chmod=755 download_Janus-Pro.sh /download_Janus-Pro.sh
 COPY --chmod=755 download_Outpainting.sh /download_Outpainting.sh
 COPY --chmod=755 download_ALL.sh /download_ALL.sh
 COPY --chmod=755 make_venv.sh /make_venv.sh
@@ -155,5 +156,20 @@ RUN cd /ComfyUI/custom_nodes && \
 # cg-use-everywhere
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/chrisgoringe/cg-use-everywhere.git
+
+# Florence2
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/kijai/ComfyUI-Florence2.git && \
+    cd ComfyUI-Florence2 && \
+    pip3 install -r requirements.txt
+
+# ComfyUI-Janus-Pro
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/CY-CHENYUE/ComfyUI-Janus-Pro.git && \
+    cd ComfyUI-Janus-Pro && \
+    pip3 install -r requirements.txt
+
+# Download models for Janus-Pro
+# RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download deepseek-ai/Janus-Pro-1B --local-dir /ComfyUI/models/Janus-Pro/Janus-Pro-1B
 
 CMD [ "/start.sh" ]

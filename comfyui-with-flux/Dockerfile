@@ -49,7 +49,9 @@ RUN mkdir -p /ComfyUI/models/controlnet/FLUX.1/Shakker-Labs-ControlNet-Union-Pro
     HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro --include diffusion_pytorch_model.safetensors --local-dir /ComfyUI/models/controlnet/FLUX.1/Shakker-Labs-ControlNet-Union-Pro
 
 # Donwload redux & fill model
-# RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download black-forest-labs/FLUX.1-Fill-dev --include "flux1-fill-dev.safetensors" --local-dir /ComfyUI/models/diffusion_models/FLUX1
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl.git
+# RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download YarvixPA/FLUX.1-Fill-dev-gguf --include "flux1-fill-dev-Q4_K_S.gguf" --local-dir /ComfyUI/models/unet
 # RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download black-forest-labs/FLUX.1-Redux-dev --include "flux1-redux-dev.safetensors" --local-dir /ComfyUI/models/style_models
 
 # Download Concept-LoRA
@@ -58,7 +60,6 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ali-vilab/In-Context-Lo
 # RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download strangerzonehf/Flux-Creative-Stocks-LoRA --include Creative-Stocks.safetensors --local-dir /ComfyUI/models/loras
 # RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download tryonlabs/FLUX.1-dev-LoRA-Outfit-Generator --include "outfit-generator.safetensors" --local-dir /ComfyUI/models/loras
 # RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download TTPlanet/Migration_Lora_flux --include "Migration_Lora_cloth.safetensors" --local-dir /ComfyUI/models/loras
-# RUN wget -O /ComfyUI/models/loras/simply_try_on.safetensors "https://civitai.com/api/download/models/1063742?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
 # RUN wget -O /ComfyUI/models/loras/cute_robot.safetensors "https://civitai.com/api/download/models/856914?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
 # RUN wget -O /ComfyUI/models/loras/Minimalist_Flat_Color_Illustration.safetensors "https://civitai.com/api/download/models/1077005?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
 # RUN wget -O /ComfyUI/models/loras/vector_Illustration.safetensors "https://civitai.com/api/download/models/880820?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
@@ -67,20 +68,34 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ali-vilab/In-Context-Lo
 # Download Detail-LoRA
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download strangerzonehf/Flux-Super-Realism-LoRA --include "super-realism.safetensors" --local-dir /ComfyUI/models/loras && \
     HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Shakker-Labs/FLUX.1-dev-LoRA-add-details --include "*.safetensors" --local-dir /ComfyUI/models/loras && \
-    wget -O /ComfyUI/models/loras/ultrarealistic-lora-project.safetensors "https://civitai.com/api/download/models/1026423?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9" && \
+    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download strangerzonehf/Flux-Midjourney-Mix2-LoRA --include "*.safetensors" --local-dir /ComfyUI/models/loras && \
+    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Shakker-Labs/FilmPortrait --include "*.safetensors" --local-dir /ComfyUI/models/loras && \
     wget -O /ComfyUI/models/loras/detailed_hands.safetensors "https://civitai.com/api/download/models/804967?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9" && \
-    wget -O /ComfyUI/models/loras/Realistic_Skin_Texture.safetensors "https://civitai.com/api/download/models/1081450?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
-# RUN wget -O /ComfyUI/models/loras/sinfully_stylish.safetensors "https://civitai.com/api/download/models/755549?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
+    wget -O /ComfyUI/models/loras/sinfully_stylish.safetensors "https://civitai.com/api/download/models/755549?type=Model&format=SafeTensor&fp=fp16&token=ff61c6fbf8c474895b34eddabb2e31f9"
 
-# Download ip_adapter
+# Download models for xlabs_ip_adapter
 RUN mkdir -p /ComfyUI/models/ipadapter-flux && \
     HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download InstantX/FLUX.1-dev-IP-Adapter --include ip-adapter.bin --local-dir /ComfyUI/models/ipadapter-flux
 
 RUN mkdir -p /ComfyUI/models/xlabs/ipadapters && \
     HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download XLabs-AI/flux-ip-adapter-v2 --include ip_adapter.safetensors --local-dir /ComfyUI/models/xlabs/ipadapters
 
-# # make the xlabs directory
-# RUN mkdir -p /ComfyUI/models/xlabs/loras && \
-#     HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download XLabs-AI/flux-RealismLora --include lora.safetensors --local-dir /ComfyUI/models/xlabs/loras
+# CatVTON    
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/chflame163/ComfyUI_CatVTON_Wrapper.git && \
+    cd ComfyUI_CatVTON_Wrapper && \
+    pip3 install -r requirements.txt
+
+# Download models for CatVTON
+RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download zhengchong/CatVTON --local-dir /ComfyUI/models/CatVTON && \
+    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download stabilityai/sd-vae-ft-mse --local-dir /ComfyUI/models/CatVTON/sd-vae-ft-mse && \
+    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download stable-diffusion-v1-5/stable-diffusion-inpainting --include "unet/*" --local-dir /ComfyUI/models/CatVTON/stable-diffusion-inpainting && \
+    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download stable-diffusion-v1-5/stable-diffusion-inpainting --include "scheduler/*.json" --local-dir /ComfyUI/models/CatVTON/stable-diffusion-inpainting
+
+# IDM-VTON    
+# RUN cd /ComfyUI/custom_nodes && \
+#     git clone https://github.com/TemryL/ComfyUI-IDM-VTON.git && \
+#     cd ComfyUI-IDM-VTON && \
+#     python3 install.py
 
 CMD [ "/start.sh" ]
