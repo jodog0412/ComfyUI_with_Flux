@@ -10,5 +10,5 @@ if [ -f "$file" ]; then
 else
     echo "Downloading $file"
     wget -O $file $url --progress=bar:force:noscroll
-    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download microsoft/Florence-2-large-ft --include "*.bin" --local-dir /ComfyUI/models/LLM
+    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download microsoft/Florence-2-large-ft --local-dir /ComfyUI/models/LLM
 fi

@@ -82,7 +82,6 @@ EXPOSE 8888
 # Add download scripts for additional models
 COPY --chmod=755 download_Florence-2.sh /download_Florence-2.sh
 COPY --chmod=755 download_Janus-Pro.sh /download_Janus-Pro.sh
-COPY --chmod=755 download_Outpainting.sh /download_Outpainting.sh
 COPY --chmod=755 download_ALL.sh /download_ALL.sh
 COPY --chmod=755 make_venv.sh /make_venv.sh
 COPY --chmod=755 disable_mixlab.sh /disable_mixlab.sh

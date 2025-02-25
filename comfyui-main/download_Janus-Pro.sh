@@ -10,5 +10,5 @@ if [ -f "$file" ]; then
 else
     echo "Downloading $file"
     wget -O $file $url --progress=bar:force:noscroll
-    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download deepseek-ai/Janus-Pro-1B --include "*.bin" --local-dir /ComfyUI/models/Janus-Pro/Janus-Pro-1B
+    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download deepseek-ai/Janus-Pro-1B --local-dir /ComfyUI/models/Janus-Pro/Janus-Pro-1B
 fi
