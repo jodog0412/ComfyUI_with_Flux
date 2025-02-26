@@ -26,7 +26,7 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Comfy-Org/sigclip_visio
 
 # 2. helpful-components
 COPY --chmod=755 download_LoRAs.sh /download_LoRAs.sh
-COPY --chmod=755 download_Stylers /download_Stylers
+COPY --chmod=755 download_Stylers.sh /download_Stylers.sh
 
 # comfyui-ipadapter-flux
 RUN cd /ComfyUI/custom_nodes && \
