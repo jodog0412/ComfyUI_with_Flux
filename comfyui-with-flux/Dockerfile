@@ -22,6 +22,7 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download openai/clip-vit-large-p
     mv /ComfyUI/models/clip_vision/model.safetensors /ComfyUI/models/clip_vision/clip_vit.safetensors
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download google/siglip-so400m-patch14-384 --include "model.safetensors" --local-dir /ComfyUI/models/clip_vision && \
     mv /ComfyUI/models/clip_vision/model.safetensors /ComfyUI/models/clip_vision/siglip-so400m.safetensors
+RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Comfy-Org/sigclip_vision_384 --include "sigclip_vision_patch14_384.safetensors" --local-dir /ComfyUI/models/clip_vision
 
 # 2. helpful-components
 COPY --chmod=755 download_LoRAs.sh /download_LoRAs.sh

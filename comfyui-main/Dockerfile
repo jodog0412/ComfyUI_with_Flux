@@ -107,6 +107,12 @@ RUN cd /ComfyUI/custom_nodes && \
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git
 
+# comfyui_segment_anything
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/storyicon/comfyui_segment_anything.git && \
+    cd comfyui_segment_anything && \
+    pip3 install -r requirements.txt
+
 # ComfyUI-Impact-Pack
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git && \
