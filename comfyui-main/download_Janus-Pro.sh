@@ -1,14 +1,14 @@
 #!/bin/bash
 
 echo "Downloading Janus-Pro-1B model"
-mkdir -p /ComfyUI/models/Janus-Pro/Janus-Pro-1B
 
+dir="/ComfyUI/models/Janus-Pro/Janus-Pro-1B"
 file="Janus-Pro-1B.bin"
+mkdir -p $dir
 
-if [ -f "$file" ]; then
-    echo "$file already exists."
+if [ -f "$dir/$file" ]; then
+    echo "$dir/$file already exists."
 else
     echo "Downloading $file"
-    wget -O $file $url --progress=bar:force:noscroll
-    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download deepseek-ai/Janus-Pro-1B --local-dir /ComfyUI/models/Janus-Pro/Janus-Pro-1B
+    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download deepseek-ai/Janus-Pro-1B --include $file --local-dir $dir
 fi

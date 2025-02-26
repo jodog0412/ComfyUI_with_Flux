@@ -6,6 +6,8 @@ ARG DOCKER_FROM=nvidia/cuda:$CUDA_VERSION-cudnn$CUDNN_VERSION-devel-ubuntu$UBUNT
 # Base NVidia CUDA Ubuntu image
 FROM $DOCKER_FROM AS base
 
+ENV HF_TOKEN ""
+
 # Install Python plus openssh, which is our minimum set of required packages.
 RUN apt-get update -y && \
     apt-get install -y python3 python3-pip python3-venv && \
@@ -82,6 +84,7 @@ EXPOSE 8888
 # Add download scripts for additional models
 COPY --chmod=755 download_Florence-2.sh /download_Florence-2.sh
 COPY --chmod=755 download_Janus-Pro.sh /download_Janus-Pro.sh
+COPY --chmod=755 download_Upscalers.sh /download_Upscalers.sh
 COPY --chmod=755 download_ALL.sh /download_ALL.sh
 COPY --chmod=755 make_venv.sh /make_venv.sh
 COPY --chmod=755 disable_mixlab.sh /disable_mixlab.sh

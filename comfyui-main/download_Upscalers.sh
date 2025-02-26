@@ -1,15 +1,24 @@
 #!/bin/bash
 
 echo "Donwloading Upscale models"
+dir="/ComfyUI/models/upscale_models"
 
-echo "Downloading 4x-UltraSharp.pth"
-cd /ComfyUI/models/upscale_models
-file="4x-UltraSharp.pth"
-url="https://civitai.com/api/download/models/125843?type=Model&format=PickleTensor"
+echo "Downloading RealESRGAN_x2.pth"
+file="RealESRGAN_x2.pth"
 
-if [ -f "$file" ]; then
+if [ -f "$dir/$file" ]; then
     echo "$file already exists."
 else
     echo "Downloading $file"
-    wget -O $file $url --progress=bar:force:noscroll
+    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ai-forever/Real-ESRGAN --include $file --local-dir $dir 
+fi
+
+echo "Downloading 4x-UltraSharp.pth"
+file="4x-UltraSharp.pth"
+
+if [ -f "$dir/$file" ]; then
+    echo "$dir/$file already exists."
+else
+    echo "Downloading $file"
+    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download lokCX/4x-Ultrasharp --include $file --local-dir $dir 
 fi
