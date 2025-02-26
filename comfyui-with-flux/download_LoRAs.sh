@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Define the download function
-dir = "/ComfyUI/models/loras"
 download_file() {
     local url=$1
     local file=$2
+    local dir="/ComfyUI/models/loras"
 
     if [ -f "$dir/$file" ]; then
         echo "File $dir/$file already exists, skipping download."
@@ -16,11 +16,12 @@ download_file() {
 download_file_HF() {
     local repository=$1
     local file=$2
+    local dir="/ComfyUI/models/loras"
 
     if [ -f "$dir/$file" ]; then
         echo "File $dir/$file already exists, skipping download."
     else
-        HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download $repository --include $file --local-dir $dir --token $HF_TOKEN
+        HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download $repository --include $file --local-dir $dir
     fi
 }
 
