@@ -17,16 +17,10 @@ RUN mkdir -p /ComfyUI/models/diffusion_models/FLUX1 && \
 # Download text_encoder models
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download comfyanonymous/flux_text_encoders --include "*.safetensors" --exclude "*_fp8_*.*" --local-dir /ComfyUI/models/clip
 
-# Download clip_vision models
-RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download openai/clip-vit-large-patch14 --include "model.safetensors" --local-dir /ComfyUI/models/clip_vision && \
-    mv /ComfyUI/models/clip_vision/model.safetensors /ComfyUI/models/clip_vision/clip_vit.safetensors
-RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download google/siglip-so400m-patch14-384 --include "model.safetensors" --local-dir /ComfyUI/models/clip_vision && \
-    mv /ComfyUI/models/clip_vision/model.safetensors /ComfyUI/models/clip_vision/siglip-so400m.safetensors
-RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Comfy-Org/sigclip_vision_384 --include "sigclip_vision_patch14_384.safetensors" --local-dir /ComfyUI/models/clip_vision
-
 # 2. helpful-components
 COPY --chmod=755 download_LoRAs.sh /download_LoRAs.sh
 COPY --chmod=755 download_Stylers.sh /download_Stylers.sh
+COPY --chmod=755 download_ClipVisions.sh /download_ClipVisions.sh
 
 # comfyui-ipadapter-flux
 RUN cd /ComfyUI/custom_nodes && \
