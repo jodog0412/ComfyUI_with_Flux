@@ -3,8 +3,6 @@ FROM jodog0412/jdg-comfyui:1.1.0
 LABEL "repository"="https://github.com/jodog0412/github-action"
 LABEL "maintainer"="jodog0412 <jodog0412@gmail.com>"
 
-ENV CIVITAI_API_TOKEN ""
-
 # 1. essential-components
 # comfyui-gguf
 RUN cd /ComfyUI/custom_nodes && \
@@ -25,11 +23,10 @@ RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download openai/clip-vit-large-p
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download google/siglip-so400m-patch14-384 --include "model.safetensors" --local-dir /ComfyUI/models/clip_vision && \
     mv /ComfyUI/models/clip_vision/model.safetensors /ComfyUI/models/clip_vision/siglip-so400m.safetensors
 
-# Download upscalers
-RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download ai-forever/Real-ESRGAN --include "RealESRGAN_x2.pth" --local-dir /ComfyUI/models/upscale_models && \
-    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download lokCX/4x-Ultrasharp --include "*.pth" --local-dir /ComfyUI/models/upscale_models
-
 # 2. helpful-components
+COPY --chmod=755 download_LoRAs.sh /download_LoRAs.sh
+COPY --chmod=755 download_Stylers /download_Stylers
+
 # comfyui-ipadapter-flux
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/Shakker-Labs/ComfyUI-IPAdapter-Flux comfyui-ipadapter-flux && \

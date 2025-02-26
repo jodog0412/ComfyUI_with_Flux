@@ -7,6 +7,7 @@ ARG DOCKER_FROM=nvidia/cuda:$CUDA_VERSION-cudnn$CUDNN_VERSION-devel-ubuntu$UBUNT
 FROM $DOCKER_FROM AS base
 
 ENV HF_TOKEN ""
+ENV CIVITAI_API_TOKEN ""
 
 # Install Python plus openssh, which is our minimum set of required packages.
 RUN apt-get update -y && \
