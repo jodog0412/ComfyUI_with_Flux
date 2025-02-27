@@ -11,7 +11,9 @@ download_file() {
         echo "File $dir/$file already exists, skipping download."
     else
         HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download $repository --include "*.safetensors" --local-dir $dir
-        mv "$dir/*.safetensors" "$dir/$file" 
+        if [ -f "$dir/model.safetensors" ]; then
+            mv "$dir/model.safetensors" "$dir/$file" 
+        fi
     fi
 }
 
