@@ -22,16 +22,15 @@ COPY --chmod=755 download_LoRAs.sh /download_LoRAs.sh
 COPY --chmod=755 download_Stylers.sh /download_Stylers.sh
 COPY --chmod=755 download_ClipVisions.sh /download_ClipVisions.sh
 
-# comfyui-ipadapter-flux
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/Shakker-Labs/ComfyUI-IPAdapter-Flux comfyui-ipadapter-flux && \
-    cd comfyui-ipadapter-flux && \
-    pip3 install -r requirements.txt
-
 # AdvancedRefluxContorl
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl.git
 
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/welltop-cn/ComfyUI-TeaCache.git && \
+    cd ComfyUI-TeaCache && \
+    pip3 install -r requirements.txt
+    
 # 3. optional-components
 # CatVTON    
 RUN cd /ComfyUI/custom_nodes && \

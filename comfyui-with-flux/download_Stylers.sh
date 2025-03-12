@@ -14,7 +14,7 @@ download_file() {
     fi
 }
 
-download_file "InstantX/FLUX.1-dev-IP-Adapter" "ip-adapter.bin" "/ComfyUI/models/ipadapter-flux"
+download_file "XLabs-AI/flux-ip-adapter-v2" "ip_adapter.safetensors" "/ComfyUI/models/xlabs/ipadapters"
 download_file "Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro" "diffusion_pytorch_model.safetensors" "/ComfyUI/models/controlnet/FLUX.1/Shakker-Labs-ControlNet-Union-Pro"
 download_file "YarvixPA/FLUX.1-Fill-dev-gguf" "flux1-fill-dev-Q4_K_S.gguf" "/ComfyUI/models/unet" 
 download_file "black-forest-labs/FLUX.1-Redux-dev" "flux1-redux-dev.safetensors" "/ComfyUI/models/style_models" 

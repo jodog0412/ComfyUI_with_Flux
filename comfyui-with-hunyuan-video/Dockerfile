@@ -1,6 +1,4 @@
-FROM jodog0412/jdg-comfyui:1.0.0
-
-RUN pip3 install hf_transfer
+FROM jodog0412/jdg-comfyui:1.1.0
 
 # Download HunyuanVideo
 RUN HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Kijai/HunyuanVideo_comfy --include hunyuan_video_720_cfgdistill_fp8_e4m3fn.safetensors  --local-dir /ComfyUI/models/diffusion_models && \
