@@ -64,10 +64,6 @@ RUN wget "https://github.com/comfyanonymous/ComfyUI_examples/blob/master/flux/fl
 
 # Install Xlabs-AI/x-flux-ipadapter
 RUN apt-get install -y libgl1-mesa-glx libglib2.0-0 --fix-missing
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/jodog0412/x-flux-comfyui.git && \
-    cd x-flux-comfyui && \
-    python3 setup.py
 
 # This is a hacky way to change the default workflow on startup, but it works
 COPY --chmod=644 defaultGraph.json /defaultGraph.json

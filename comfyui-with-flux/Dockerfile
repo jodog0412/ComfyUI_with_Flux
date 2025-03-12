@@ -22,10 +22,17 @@ COPY --chmod=755 download_LoRAs.sh /download_LoRAs.sh
 COPY --chmod=755 download_Stylers.sh /download_Stylers.sh
 COPY --chmod=755 download_ClipVisions.sh /download_ClipVisions.sh
 
+# x-flux-comfyui
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/jodog0412/x-flux-comfyui.git && \
+    cd x-flux-comfyui && \
+    python3 setup.py
+
 # AdvancedRefluxContorl
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl.git
 
+# TeaCache
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/welltop-cn/ComfyUI-TeaCache.git && \
     cd ComfyUI-TeaCache && \
