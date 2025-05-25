@@ -17,6 +17,8 @@ download_file() {
 download_file "Kijai/WanVideo_comfy" "umt5-xxl-enc-fp8_e4m3fn.safetensors" "ComfyUI/models/text_encoders"
 download_file "Kijai/WanVideo_comfy" "open-clip-xlm-roberta-large-vit-huge-14_visual_fp16.safetensors" "ComfyUI/models/text_encoders"
 download_file "Kijai/WanVideo_comfy" "Wan2_1_VAE_bf16.safetensors" "ComfyUI/models/vae"
+download_file "Kijai/WanVideo_comfy" "Wan2_1-T2V-14B_fp8_e4m3fn.safetensors" "ComfyUI/models/diffusion_models"
 download_file "Kijai/WanVideo_comfy" "Wan2_1-I2V-14B-480P_fp8_e4m3fn.safetensors" "ComfyUI/models/diffusion_models"
 download_file "Kijai/WanVideo_comfy" "Wan2_1-I2V-14B-720P_fp8_e4m3fn.safetensors" "ComfyUI/models/diffusion_models"
+download_file "Kijai/WanVideo_comfy" "Wan2_1-VACE_module_14B_fp8_e4m3fn.safetensors" "ComfyUI/models/diffusion_models"
 download_file "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/clip_vision/clip_vision_h.safetensors" "ComfyUI/models/clip_vision"
