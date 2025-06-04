@@ -28,4 +28,5 @@ download_file_HF() {
 download_file "https://civitai.com/api/download/models/1516994?type=Model&format=SafeTensor&token=$CIVITAI_API_TOKEN" "live_wallpaper.safetensors"
 download_file "https://civitai.com/api/download/models/1794316?type=Model&format=SafeTensor&token=$CIVITAI_API_TOKEN" "WAN_speedup.safetensors"
 download_file "https://civitai.com/api/download/models/1565668?type=Model&format=SafeTensor&token=$CIVITAI_API_TOKEN" "WAN_detail.safetensors"
+download_file_HF alibaba-pai/Wan2.1-Fun-Reward-LoRAs Wan2.1-Fun-14B-InP-HPS2.1.safetensors
 # download_file "https://civitai.com/api/download/models/1403959?type=Model&format=SafeTensor&token=$CIVITAI_API_TOKEN" "Motion_craft.safetensors"
