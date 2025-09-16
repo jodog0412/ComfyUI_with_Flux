@@ -10,13 +10,12 @@ download_file() {
     if [ -f "$dir/$file" ]; then
         echo "File $dir/$file already exists, skipping download."
     else
-        HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download $repository --include $file --local-dir $dir
+        hf download $repository --include $file --local-dir $dir
     fi
 }
 
 # download_file "Kijai/WanVideo_comfy" "umt5-xxl-enc-fp8_e4m3fn.safetensors" "ComfyUI/models/text_encoders"
-download_file "Kijai/WanVideo_comfy" "split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors" "ComfyUI/models/text_encoders"
-download_file "Kijai/WanVideo_comfy" "open-clip-xlm-roberta-large-vit-huge-14_visual_fp16.safetensors" "ComfyUI/models/text_encoders"
+download_file "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors" "ComfyUI/models/text_encoders"
 download_file "Kijai/WanVideo_comfy" "Wan2_1_VAE_bf16.safetensors" "ComfyUI/models/vae"
 download_file "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors" "ComfyUI/models/diffusion_models"
 download_file "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors" "ComfyUI/models/diffusion_models"

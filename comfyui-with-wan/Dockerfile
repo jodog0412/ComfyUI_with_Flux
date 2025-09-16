@@ -1,5 +1,6 @@
 FROM jodog0412/jdg-comfyui:1.1.0
 
+RUN pip3 install -U "huggingface_hub[cli]"
 RUN pip3 install imageio-ffmpeg
 
 # RUN git clone https://github.com/thu-ml/SageAttention.git && \
