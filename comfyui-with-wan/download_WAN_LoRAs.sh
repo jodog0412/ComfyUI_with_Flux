@@ -21,7 +21,7 @@ download_file_HF() {
     if [ -f "$dir/$file" ]; then
         echo "File $dir/$file already exists, skipping download."
     else
-        HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download $repository --include $file --local-dir $dir
+        hf download $repository --include $file --local-dir $dir
     fi
 }
 
