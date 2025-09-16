@@ -25,8 +25,6 @@ download_file_HF() {
     fi
 }
 
-download_file "https://civitai.com/api/download/models/1516994?type=Model&format=SafeTensor&token=$CIVITAI_API_TOKEN" "live_wallpaper.safetensors"
-download_file "https://civitai.com/api/download/models/1794316?type=Model&format=SafeTensor&token=$CIVITAI_API_TOKEN" "WAN_speedup.safetensors"
-download_file "https://civitai.com/api/download/models/1565668?type=Model&format=SafeTensor&token=$CIVITAI_API_TOKEN" "WAN_detail.safetensors"
-download_file_HF alibaba-pai/Wan2.1-Fun-Reward-LoRAs Wan2.1-Fun-14B-InP-HPS2.1.safetensors
-# download_file "https://civitai.com/api/download/models/1403959?type=Model&format=SafeTensor&token=$CIVITAI_API_TOKEN" "Motion_craft.safetensors"
+download_file_HF Kijai/WanVideo_comfy Wan22-Lightning/Wan2.2-Lightning_I2V-A14B-4steps-lora_HIGH_fp16.safetensors
+download_file_HF Kijai/WanVideo_comfy Wan22-Lightning/Wan2.2-Lightning_I2V-A14B-4steps-lora_LOW_fp16.safetensors
+download_file_HF Kijai/WanVideo_comfy Lightx2v/lightx2v_I2V_14B_480p_cfg_step_distill_rank128_bf16.safetensors

@@ -15,3 +15,5 @@ download_file() {
 
 download_file "h94/IP-Adapter" "sdxl_models/image_encoder/model.safetensors" "/ComfyUI/models/clip_vision"
 download_file "h94/IP-Adapter" "sdxl_models/ip-adapter_sdxl.safetensors" "/ComfyUI/models/ipadapter"
+download_file "h94/IP-Adapter-FaceID" "ip-adapter-faceid-plusv2_sdxl.bin" "/ComfyUI/models/ipadapter"
+download_file "h94/IP-Adapter-FaceID" "ip-adapter-faceid-plusv2_sdxl_lora.safetensors" "/ComfyUI/models/loras"
