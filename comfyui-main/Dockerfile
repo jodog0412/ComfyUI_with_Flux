@@ -1,9 +1,14 @@
-ARG CUDA_VERSION="12.1.1"
-ARG CUDNN_VERSION="8"
-ARG UBUNTU_VERSION="22.04"
-ARG DOCKER_FROM=nvidia/cuda:$CUDA_VERSION-cudnn$CUDNN_VERSION-devel-ubuntu$UBUNTU_VERSION
+# Legacy
+# ARG CUDA_VERSION="12.1.1"
+# ARG CUDNN_VERSION="8"
+# ARG UBUNTU_VERSION="22.04"
+# ARG DOCKER_FROM=nvidia/cuda:$CUDA_VERSION-cudnn$CUDNN_VERSION-devel-ubuntu$UBUNTU_VERSION
 
-# Base NVidia CUDA Ubuntu image
+# Experiment
+ARG CUDA_VERSION="13.0.2"
+ARG UBUNTU_VERSION="22.04"
+ARG DOCKER_FROM=nvidia/cuda:$CUDA_VERSION-devel-ubuntu$UBUNTU_VERSION
+
 FROM $DOCKER_FROM AS base
 
 # Install Python plus openssh, which is our minimum set of required packages.
@@ -14,6 +19,7 @@ RUN apt-get update -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN pip3 install -U huggingface_hub
 RUN pip3 install hf_transfer
 
 # Install nginx
@@ -25,10 +31,14 @@ COPY default /etc/nginx/sites-available/default
 
 ENV PATH="/usr/local/cuda/bin:${PATH}"
 
-# Install pytorch
-ARG PYTORCH="2.4.0"
-ARG CUDA="121"
-RUN pip3 install --no-cache-dir -U torch==$PYTORCH torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu$CUDA
+# pytorch for legacy
+# ARG PYTORCH="2.4.0"
+# ARG CUDA="121"
+
+# Install pytorch for Experiemnt
+ARG PYTORCH="2.9.1"
+ARG CUDA="130"
+RUN pip3 install --no-cache-dir -U torch==$PYTORCH torchvision torchaudio --index-url https://download.pytorch.org/whl/cu$CUDA
 
 COPY --chmod=755 start-ssh-only.sh /start.sh
 COPY --chmod=755 start-original.sh /start-original.sh
@@ -161,16 +171,16 @@ RUN cd /ComfyUI/custom_nodes && \
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/chrisgoringe/cg-use-everywhere.git
 
-# Florence2
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/kijai/ComfyUI-Florence2.git && \
-    cd ComfyUI-Florence2 && \
-    pip3 install -r requirements.txt
+# # Florence2
+# RUN cd /ComfyUI/custom_nodes && \
+#     git clone https://github.com/kijai/ComfyUI-Florence2.git && \
+#     cd ComfyUI-Florence2 && \
+#     pip3 install -r requirements.txt
 
-# ComfyUI-Janus-Pro
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/CY-CHENYUE/ComfyUI-Janus-Pro.git && \
-    cd ComfyUI-Janus-Pro && \
-    pip3 install -r requirements.txt
+# # ComfyUI-Janus-Pro
+# RUN cd /ComfyUI/custom_nodes && \
+#     git clone https://github.com/CY-CHENYUE/ComfyUI-Janus-Pro.git && \
+#     cd ComfyUI-Janus-Pro && \
+#     pip3 install -r requirements.txt
 
 CMD [ "/start.sh" ]

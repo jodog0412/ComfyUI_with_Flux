@@ -13,5 +13,5 @@ download_file() {
     fi
 }
 
-download_file "https://civitai.com/api/download/models/1166878?type=Model&format=SafeTensor&token=$CIVITAI_API_TOKEN" "NTRMIX.safetensors"
-download_file "https://civitai.com/api/download/models/1190596?type=Model&format=SafeTensor&token=$CIVITAI_API_TOKEN" "NoobAI_VPred.safetensors"
+download_file "https://civitai.com/api/download/models/2467972?type=Model&format=SafeTensor&token=$CIVITAI_API_TOKEN" "Prefect_illustrious_XL.safetensors"
+download_file "https://civitai.com/api/download/models/2337366?type=Model&format=SafeTensor&token=$CIVITAI_API_TOKEN" "Hassaku_XL.safetensors"
