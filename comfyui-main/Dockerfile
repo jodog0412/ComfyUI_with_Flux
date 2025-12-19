@@ -40,11 +40,10 @@ ARG PYTORCH="2.9.1"
 ARG CUDA="130"
 RUN pip3 install --no-cache-dir -U torch==$PYTORCH torchvision torchaudio --index-url https://download.pytorch.org/whl/cu$CUDA
 
-COPY --chmod=755 start-ssh-only.sh /start.sh
-COPY --chmod=755 start-original.sh /start-original.sh
-COPY --chmod=755 comfyui-on-workspace.sh /comfyui-on-workspace.sh
-COPY --chmod=755 ai-toolkit-on-workspace.sh /ai-toolkit-on-workspace.sh
-COPY --chmod=755 check_files.sh /check_files.sh
+COPY --chmod=777 start-ssh-only.sh /start.sh
+COPY --chmod=777 start-original.sh /start-original.sh
+COPY --chmod=777 comfyui-on-workspace.sh /comfyui-on-workspace.sh
+COPY --chmod=777 ai-toolkit-on-workspace.sh /ai-toolkit-on-workspace.sh
 
 # Clone the git repo and install requirements in the same RUN command to ensure they are in the same layer
 RUN git clone https://github.com/comfyanonymous/ComfyUI.git && \
@@ -86,11 +85,9 @@ RUN pip3 install jupyterlab
 EXPOSE 8888
 
 # Add download scripts for additional models
-COPY --chmod=755 download_Florence-2.sh /download_Florence-2.sh
-COPY --chmod=755 download_Janus-Pro.sh /download_Janus-Pro.sh
 COPY --chmod=755 download_Upscalers.sh /download_Upscalers.sh
 COPY --chmod=755 download_ALL.sh /download_ALL.sh
-COPY --chmod=755 make_venv.sh /make_venv.sh
+COPY --chmod=777 make_venv.sh /make_venv.sh
 COPY --chmod=755 disable_mixlab.sh /disable_mixlab.sh
 
 # KJNodes
@@ -170,17 +167,5 @@ RUN cd /ComfyUI/custom_nodes && \
 # cg-use-everywhere
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/chrisgoringe/cg-use-everywhere.git
-
-# # Florence2
-# RUN cd /ComfyUI/custom_nodes && \
-#     git clone https://github.com/kijai/ComfyUI-Florence2.git && \
-#     cd ComfyUI-Florence2 && \
-#     pip3 install -r requirements.txt
-
-# # ComfyUI-Janus-Pro
-# RUN cd /ComfyUI/custom_nodes && \
-#     git clone https://github.com/CY-CHENYUE/ComfyUI-Janus-Pro.git && \
-#     cd ComfyUI-Janus-Pro && \
-#     pip3 install -r requirements.txt
 
 CMD [ "/start.sh" ]
